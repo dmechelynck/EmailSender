@@ -4,8 +4,8 @@ import smtplib
 print("Hello, here is the time: "+str(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
 
 
-gmail_user = 'frompythontool@gmail.com'
-gmail_password = 'MarketingBoost'
+gmail_user = 'agilyticdemo@gmail.com'
+gmail_password = 'Rigidytic'
 
 sent_from = gmail_user
 to = ['diego.mechelynck@gmail.com']
