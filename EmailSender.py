@@ -11,7 +11,7 @@ sent_from = gmail_user
 to = ['diego.mechelynck@gmail.com']
 subject = 'Airflow message'
 
-email_text="Hello Diegoo this is airflowww"
+email_text="Hello folksssss"
 
 
 server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
