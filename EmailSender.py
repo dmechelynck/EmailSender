@@ -1,14 +1,16 @@
 from datetime import datetime
 import smtplib
+import sys
 
-print("Hello, here is the time: "+str(datetime.now().strftime("%m/%d/%Y, %H:%M:%S")))
+recipient=sys.argv[1]
+#recipient='diego.mechelynck@gmail.com'
 
 
 gmail_user = 'agilyticdemo@gmail.com'
 gmail_password = 'Rigidytic'
 
 sent_from = gmail_user
-to = ['diego.mechelynck@gmail.com']
+to = [recipient]
 subject = 'Airflow message'
 
 email_text="Hello folksssss"
