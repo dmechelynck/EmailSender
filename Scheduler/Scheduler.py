@@ -22,7 +22,7 @@ default_args = {
 
 
 
-dag = DAG("EmailSender", default_args=default_args, schedule_interval='0 1 * * *')
+dag = DAG("EmailSender", default_args=default_args, schedule_interval='0 1 * * *') # dag name doesn't have to be same name as python script but it is recommended to do so
 
 
 t1 = BashOperator(
