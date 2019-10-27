@@ -22,7 +22,7 @@ default_args = {
 
 
 
-dag = DAG("TimePrinter_Scheduler", default_args=default_args, schedule_interval='0 1 * * *')
+dag = DAG("EmailSender", default_args=default_args, schedule_interval='0 1 * * *')
 
 
 t1 = BashOperator(
