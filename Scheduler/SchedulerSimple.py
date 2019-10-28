@@ -18,12 +18,11 @@ default_args = {
     'email_on_retry': False,
     'retries': 1,
     'retry_delay': timedelta(minutes=1),
-
 }
 
 
 
-dag = DAG("EmailSender", default_args=default_args, schedule_interval='0 1 * * *')
+dag = DAG("EmailSenderSimple", default_args=default_args, schedule_interval='0 1 * * *')
 
 
 t1 = BashOperator(
@@ -39,16 +38,8 @@ t2 = BashOperator(
 t3 = BashOperator(
     task_id='DoneMessage',
     bash_command='echo "done"',
-    trigger_rule=TriggerRule.ALL_SUCCESS,
-    dag=dag)
-
-t4 = BashOperator(
-    task_id='ErrorMessage',
-    bash_command='echo "I failed"',
-    trigger_rule=TriggerRule.ONE_FAILED,
+    trigger_rule=TriggerRule.ALL_SUCCESS, #ALL_SUCCESS is the value by default
     dag=dag)
 
 
 t3.set_upstream([t1, t2])
-
-t4.set_upstream([t1, t2])
