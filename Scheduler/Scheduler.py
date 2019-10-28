@@ -1,5 +1,6 @@
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
+from airflow.utils.trigger_rule import TriggerRule
 from datetime import datetime, timedelta
 import time
 
@@ -38,7 +39,16 @@ t2 = BashOperator(
 t3 = BashOperator(
     task_id='DoneMessage',
     bash_command='echo "done"',
+    trigger_rule=TriggerRule.ALL_SUCCESS,
+    dag=dag)
+
+t4 = BashOperator(
+    task_id='ErrorMessage',
+    bash_command='echo "I failed"',
+    trigger_rule=TriggerRule.ONE_FAILED,
     dag=dag)
 
 
 t3.set_upstream([t1, t2])
+
+t4.set_upstream([t1, t2])
