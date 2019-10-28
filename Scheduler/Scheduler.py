@@ -34,6 +34,7 @@ t1 = BashOperator(
 t2 = BashOperator(
     task_id='SendEmailPerson2',
     bash_command = path_to_vitual_env + ' /home/dmechelynck/Builds/EmailSender/code/EmailSender/EmailSender.py' + " " + 'diego.mechelynck@gmail.com',
+    retries=2,
     dag=dag)
 
 t3 = BashOperator(
