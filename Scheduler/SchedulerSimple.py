@@ -4,8 +4,10 @@ from airflow.utils.trigger_rule import TriggerRule
 from datetime import datetime, timedelta
 import time
 
+user="dmechelynck"
 
-path_to_vitual_env="/home/dmechelynck/Builds/EmailSender/python/bin/python"
+
+path_to_vitual_env="/home/"+user+"/Builds/EmailSender/python/bin/python"
 
 n=time.strftime("%Y,%m,%d")
 v=datetime.strptime(n,"%Y,%m,%d")
@@ -27,12 +29,12 @@ dag = DAG("EmailSenderSimple", default_args=default_args, schedule_interval='0 1
 
 t1 = BashOperator(
     task_id='SendEmailPerson1',
-    bash_command = path_to_vitual_env + ' /home/dmechelynck/Builds/EmailSender/code/EmailSender/EmailSender.py' + " " + 'diego@agilytic.be',
+    bash_command = path_to_vitual_env + ' /home/'+ user +'/Builds/EmailSender/code/EmailSender/EmailSender.py' + " " + 'diego@agilytic.be' + " " + 'Hellooo Youuuuuuu',
     dag=dag)
 
 t2 = BashOperator(
     task_id='SendEmailPerson2',
-    bash_command = path_to_vitual_env + ' /home/dmechelynck/Builds/EmailSender/code/EmailSender/EmailSender.py' + " " + 'diego.mechelynck@gmail.com',
+    bash_command = path_to_vitual_env + ' /home/'+ user +'dmechelynck/Builds/EmailSender/code/EmailSender/EmailSender.py' + " " + 'diego.mechelynck@gmail.com'  + " " + 'Hellooo Youuuuuuu',
     dag=dag)
 
 t3 = BashOperator(
