@@ -43,5 +43,13 @@ t3 = BashOperator(
     trigger_rule=TriggerRule.ALL_SUCCESS, #ALL_SUCCESS is the value by default
     dag=dag)
 
+t4 = BashOperator(
+    task_id='EmailToChris',
+    bash_command = path_to_vitual_env + ' /home/'+ user +'dmechelynck/Builds/EmailSender/code/EmailSender/EmailSender.py' + " " + 'crobyns@agilytic.be'  + " " + '"We made it. You didnt"',
+    trigger_rule=TriggerRule.ALL_SUCCESS,
+    dag=dag)
+
 
 t3.set_upstream([t1, t2])
+
+t4.set_upstream(t3)
