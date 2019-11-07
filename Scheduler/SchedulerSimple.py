@@ -45,7 +45,13 @@ t3 = BashOperator(
 
 t4 = BashOperator(
     task_id='EmailToChris',
-    bash_command = path_to_vitual_env + ' /home/'+ user +'dmechelynck/Builds/EmailSender/code/EmailSender/EmailSender.py' + " " + 'crobyns@agilytic.be'  + " " + '"We made it. You didnt"',
+    bash_command = path_to_vitual_env + ' /home/'+ user +'dmechelynck/Builds/EmailSender/code/EmailSender/EmailSender.py' + " " + 'crobyns@agilytic.be'  + " " + '"Captain! Alex helicopter is ready!"',
+    trigger_rule=TriggerRule.ALL_SUCCESS,
+    dag=dag)
+
+t5 = BashOperator(
+    task_id='EmailToAlex',
+    bash_command = path_to_vitual_env + ' /home/'+ user +'dmechelynck/Builds/EmailSender/code/EmailSender/EmailSender.py' + " " + 'alex@agilytic.be'  + " " + '"Sir, Your helicopter is ready!"',
     trigger_rule=TriggerRule.ALL_SUCCESS,
     dag=dag)
 
@@ -53,3 +59,4 @@ t4 = BashOperator(
 t3.set_upstream([t1, t2])
 
 t4.set_upstream(t3)
+t5.set_upstream(t4)
