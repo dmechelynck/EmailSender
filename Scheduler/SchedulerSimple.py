@@ -29,12 +29,12 @@ dag = DAG("EmailSenderSimple", default_args=default_args, schedule_interval='0 1
 
 t1 = BashOperator(
     task_id='SendEmailPerson1',
-    bash_command = path_to_vitual_env + ' /home/'+ user +'/Builds/EmailSender/code/EmailSender/EmailSender.py' + " " + 'diego@agilytic.be' + " " + '"Hellooo Youuuuuuu"',
+    bash_command = path_to_vitual_env + ' /home/'+ user +'/Builds/EmailSender/code/EmailSender/EmailSender.py' + " " + 'diego.mechelynck@gmail.com' + " " + '"Hellooo Youuuuuuu"',
     dag=dag)
 
 t2 = BashOperator(
     task_id='SendEmailPerson2',
-    bash_command = path_to_vitual_env + ' /home/'+ user +'dmechelynck/Builds/EmailSender/code/EmailSender/EmailSender.py' + " " + 'diego.mechelynck@gmail.com'  + " " + '"Hellooo Youuuuuuu"',
+    bash_command = path_to_vitual_env + ' /home/'+ user +'dmechelynck/Builds/EmailSender/code/EmailSender/EmailSender.py' + " " + 'diego.mechelynck@gmail.com' + " " + '"Hellooo Youuuuuuu"',
     dag=dag)
 
 t3 = BashOperator(
